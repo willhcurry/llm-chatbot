@@ -33,7 +33,7 @@
 
 <script setup lang="ts">
 const isChatting = useIsChatting();
-const {customerName, hasNameError } = useCustomer();
+const { customerName, hasNameError } = useCustomer();
 
 function handleSubmit() {
     isChatting.value = true;

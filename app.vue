@@ -9,7 +9,7 @@
     >
       <div class="bg-white border border-slate-200 p-6 rounded">
         <!-- Start Screen -->
-        <Start v-if="isChatting" />
+        <Start v-if="!isChatting" />
 
         <!-- Chat Screen -->
         <Chat v-else />
