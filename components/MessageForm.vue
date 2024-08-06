@@ -29,13 +29,15 @@
   <script lang="ts">
   import { ref } from "vue";
   import { useMessages } from '~/composables/states';
+  import { marked } from "marked";
+  import dompurify from "Dompurify";
   
   export default {
     setup() {
       const newMessage = ref("");
       const messages = useMessages();
       const { customerInitials } = useCustomer();
-      const handleSubmit = () => {
+      const handleSubmit = async () => {
         messages.value.push({
             name: customerInitials.value,
             message: newMessage.value,
@@ -47,9 +49,13 @@
 
         newMessage.value = "";
 
+        const parsedMessage = await marked.parse(
+            dompurify.sanitize("Hello **World")
+        );
+
         messages.value.push({
             name: "Bruno",
-            message: newMessage.value,
+            message: parsedMessage,
             isBruno: true,
             timestamp: new Date().toLocaleString([], {
                 timeStyle: "short",

@@ -45,6 +45,9 @@
                 class="w-3/5 flex flex-col gap-2 border px-4 pt-3 pb-4 rounded-xl bg-slate-50/80 border-slate-200/80"
               >
                 <!-- Message Content -->
+                <div v-if="message.isBruno" v-html="message.message">
+
+                </div>
                 <div>
                   {{ message.message }}
                 </div>
